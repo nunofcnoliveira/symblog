@@ -1,0 +1,4 @@
+services:
+#    nuno_blog.example:
+#        class: Nuno\BlogBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

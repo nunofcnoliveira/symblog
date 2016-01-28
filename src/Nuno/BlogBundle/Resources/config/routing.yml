@@ -1,0 +1,17 @@
+NunoBlogBundle_homepage:
+    path:  /
+    defaults: { _controller: NunoBlogBundle:Page:index }
+    requirements:
+        _method:  GET
+
+NunoBlogBundle_about:
+    path:  /about
+    defaults: { _controller: NunoBlogBundle:Page:about }
+    requirements:
+        _method:  GET
+
+NunoBlogBundle_contact:
+    path:  /contact
+    defaults: { _controller: NunoBlogBundle:Page:contact }
+    requirements:
+        _method:  GET|POST
