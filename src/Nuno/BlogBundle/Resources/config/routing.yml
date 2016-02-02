@@ -22,3 +22,10 @@ NunoBlogBundle_blog_show:
     requirements:
         _method:  GET
         id: \d+
+
+NunoBlogBundle_comment_create:
+    path:  /comment/{blog_id}
+    defaults: { _controller: NunoBlogBundle:Comment:create }
+    requirements:
+        _method:  POST
+        blog_id: \d+

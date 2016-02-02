@@ -1,5 +1,32 @@
 {% extends 'NunoBlogBundle::layout.html.twig' %}
 
+{% set allowedbloglength = 500 %}
+
 {% block body %}
-    Blog homepage
+	{% for blog in blogs %}
+		<article class="blog">
+			<div class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time></div>
+			<header>
+				<h2><a href="{{ path('NunoBlogBundle_blog_show', { 'id': blog.id }) }}">{{ blog.title }}</a></h2>
+			</header>
+
+			<img src="{{ asset(['images/', blog.image]|join) }}" />
+			<div class="snippet">
+				{% if blog.blog|length > allowedbloglength %}
+					<p>{{ blog.blog(allowedbloglength) }}(...)</p>
+				{% else %}
+					<p>{{ blog.blog(allowedbloglength) }}</p>
+				{% endif %}
+				<p class="continue"><a href="{{ path('NunoBlogBundle_blog_show', { 'id': blog.id }) }}">Continue reading...</a></p>
+			</div>
+
+			<footer class="meta">
+				<p>Comments: -</p>
+				<p>Posted by <span class="highlight">{{blog.author}}</span> at {{ blog.created|date('h:iA') }}</p>
+				<p>Tags: <span class="highlight">{{ blog.tags }}</span></p>
+			</footer>
+		</article>
+	{% else %}
+		<p>There are no blog entries for symblog</p>
+	{% endfor %}
 {% endblock %}
