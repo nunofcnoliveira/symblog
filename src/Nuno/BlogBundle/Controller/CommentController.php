@@ -42,7 +42,11 @@ class CommentController extends Controller
 			$em->persist($comment);
 			$em->flush();
 
-			return $this->redirectToRoute('NunoBlogBundle_blog_show', array('id' => $comment->getBlog()->getId()));
+			// return $this->redirectToRoute('NunoBlogBundle_blog_show', array('id' => $comment->getBlog()->getId()));
+			return $this->redirectToRoute('NunoBlogBundle_blog_show', array(
+				'id'    => $comment->getBlog()->getId(),
+				'slug'  => $comment->getBlog()->getSlug())
+			);
 		}
 
 		return $this->render('NunoBlogBundle:Comment:create.html.twig', array(

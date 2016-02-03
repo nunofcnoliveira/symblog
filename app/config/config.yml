@@ -9,6 +9,8 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    # Blogger max latest comments
+    nuno_blog.comments.latest_comment_limit: 10
 
 framework:
     #esi:             ~

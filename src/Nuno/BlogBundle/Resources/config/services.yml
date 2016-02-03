@@ -2,3 +2,7 @@ services:
 #    nuno_blog.example:
 #        class: Nuno\BlogBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+    nuno_blog.twig.extension:
+        class: Nuno\BlogBundle\Twig\Extensions\NunoBlogExtension
+        tags:
+            - { name: twig.extension }

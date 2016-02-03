@@ -55,4 +55,21 @@ class PageController extends Controller
 			'form' => $form->createView()
 		));
 	}
+
+	public function sidebarAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+
+		$tags = $em->getRepository('NunoBlogBundle:Blog')->getTags();
+
+		$tagWeights = $em->getRepository('NunoBlogBundle:Blog')->getTagWeights($tags);
+
+		$commentLimit = $this->container->getParameter('nuno_blog.comments.latest_comment_limit');
+		$latestComments = $em->getRepository('NunoBlogBundle:Comment')->getLatestComments($commentLimit);
+
+		return $this->render('NunoBlogBundle:Page:sidebar.html.twig', array(
+			'latestComments' => $latestComments,
+			'tags' => $tagWeights,
+		));
+	}
 }

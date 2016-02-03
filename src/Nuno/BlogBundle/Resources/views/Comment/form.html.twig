@@ -1,5 +1,4 @@
 {{ form_start(form, {'action': path('NunoBlogBundle_comment_create', { 'blog_id' : comment.blog.id }), 'method': 'post', 'attr': {'class': 'blogger'}}) }}
-	{# form_widget(form) #}
 	{{ form_errors(form) }}
 
 	{{ form_row(form.user) }}
